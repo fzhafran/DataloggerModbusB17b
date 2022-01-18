@@ -185,7 +185,7 @@ def counterrun () :
     counter = counter + 1
     return counter
 
-def reading() :
+while True :
     global counter
     counterrun ()
     if counter == 6 :
@@ -193,6 +193,3 @@ def reading() :
         checkrequest()
         counter = 0
     time.sleep (1)
-    reading()
-
-reading()

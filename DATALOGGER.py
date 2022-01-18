@@ -49,10 +49,12 @@ bgahu.grid(row = 0, column = 0)
 
 xxx = 0
 alerting = []
+alarmsent = []
 with open ('devicelist.csv','r') as limitlist :
     next(limitlist)
     for row in csv.reader(limitlist, delimiter = ','):
         alerting.append(0)
+        alarmsent.append(0)
         
 def hitung():
     global xxx
@@ -341,16 +343,17 @@ def read () :
                                 writer = csv.writer(writeFile)
                                 writer.writerows(lines)
                             writeFile.close()
+                            alarmsent[choose], alerting[choose] = 0,0
                             lines = None
                         except :
                             pass
 
                     else:
                         entry.configure(bg="white", text="{value:6.2f} degC".format(value=float(datain[choose])))
-                        alerting[choose] = alerting[choose] + 1
-                        if alerting[choose] > 10:
+                        alerting[choose] = 1
+                        if alerting[choose] = 1 and alarmsent[choose] = 0:
                             alert(param[choose] +','+ param[choose] + " tidak sesuai")
-                            alerting[choose] = 0
+                            alarmsent[choose] = 1
                 if datacond[choose] == 'OFF':
                     entry.configure(bg="white", text="off")
 
@@ -373,15 +376,16 @@ def read () :
                                 writer = csv.writer(writeFile)
                                 writer.writerows(lines)
                             writeFile.close()
+                            alarmsent[choose], alerting[choose] = 0, 0
                             lines = None
                         except :
                             pass
                     else:
                         entry.configure(bg="white", text="{value:6.2f} pa".format(value=float(datain[choose])))
-                        alerting[choose] = alerting[choose] + 1
-                        if alerting[choose] > 10:
+                        alerting[choose] = 1
+                        if alerting[choose] = 1 and alarmsent[choose] = 0:
                             alert(param[choose] +','+ param[choose] + " tidak sesuai")
-                            alerting[choose] = 0
+                            alarmsent[choose] = 1
                 if datacond[choose] == 'OFF':
                     entry.configure(bg="white", text="off")
 
@@ -434,21 +438,6 @@ def frameschedule (targetschedule):
                          command=lambda: schedule(targetaddress, waktuawal.get(), waktuakhir.get()))
     set.grid(row=3, column=0)
     paramlist = addresslist = None
-
-def read_every_second () :
-    global valuextemp1
-    try :
-        with open ('realtimedata.csv', 'r') as carivaluextemp1 :
-            nomortemp1 = []
-            for row in csv.reader (carivaluextemp1, delimiter = ',') :
-                nomortemp1.append (int (row[0]))
-        carivaluextemp1.close()
-        valuextemp1 = len (nomortemp1) - 1
-        read ()
-        # checkingsch()
-        nomortemp1 = None
-    except Exception as exc :
-        print(exc)
 
 ########################################################################################################################
 ############################## FRAME PERSIAPAN 401 225##############################################################################
@@ -895,7 +884,20 @@ presentvalue20a.grid (row = 1, column = 1)
 ########################################################################################################################
 
 while True :
-    read_every_second ()
+    global valuextemp1
+    try:
+        with open('realtimedata.csv', 'r') as carivaluextemp1:
+            nomortemp1 = []
+            for row in csv.reader(carivaluextemp1, delimiter=','):
+                nomortemp1.append(int(row[0]))
+        carivaluextemp1.close()
+        valuextemp1 = len(nomortemp1) - 1
+        read()
+        # checkingsch()
+        nomortemp1 = None
+    except Exception as exc:
+        print(exc)
+
     root.update_idletasks()
     root.update()
 
