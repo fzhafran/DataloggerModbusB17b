@@ -1,0 +1,41 @@
+Parameter,Alamat,Min,Max,Ruang,dataplace
+Suhu Persiapan,9,22,27,Persiapan,2
+Tekanan Persiapan,10,10,20,Persiapan,4
+Suhu Alat Steril,8,22,27,Alat Steril,6
+Tekanan Alat Steril,7,20,30,Alat Steril,8
+Suhu Sterilisasi,5,22,27,Sterilisasi,10
+Tekanan Sterilisasi,6,10,20,Sterilisasi,12
+Suhu PRA 1,4,22,27,PRA 1,14
+Tekanan PRA 1,3,20,30,PRA 1,16
+Suhu PRA 2,1,22,27,PRA 2,18
+Tekanan PRA 2,2,20,30,PRA 2,20
+Suhu K Bersih 1,11,22,27,K Bersih 1,22
+Tekanan K Bersih 1,12,10,20,K Bersih 1,24
+Suhu Post 2,13,22,27,Post 2,26
+Tekanan Post 2,14,-20,-10,Post 2,28
+Suhu Inoharvest 2,15,22,27,Inoharvest 2,30
+Tekanan Inoharvest 2,16,-35,-25,Inoharvest 2,32
+Suhu Candling,17,22,27,Candling,34
+Tekanan Candling,18,10,20,Candling,36
+Suhu Separasi,19,22,27,Separasi,38
+Tekanan Separasi,20,-20,-10,Separasi,40
+Suhu K Kotor,21,22,27,K Kotor,42
+Tekanan K Kotor,22,-10,10,K Kotor,44
+Suhu Dekont BSL 2,23,22,27,Dekont BSL 2,46
+Tekanan Dekont BSL 2,24,-10,10,Dekont BSL 2,48
+Suhu Dekont BSL 3,25,22,27,Dekont BSL 3,50
+Tekanan Dekont BSL 3,26,-35,-25,Dekont BSL 3,52
+Suhu Inoharvest 1,27,22,27,Inoharvest 1,54
+Tekanan Inoharvest 1,28,-35,-25,Inoharvest 1,56
+Suhu K Bersih 2,29,22,27,K Bersih 2,58
+Tekanan K Bersih 2,30,10,20,K Bersih 2,60
+Suhu Post 1,31,22,27,Post 1,62
+Tekanan Post 1,32,-20,-10,Post 1,64
+Chilling 1,33,3,6,Chilling 1,66
+Chilling 1,33,3,6,Chilling 1,68
+Chilling 2,34,3,6,Chilling 2 ,70
+Chilling 2,34,3,6,Chilling 2,72
+Bulk 1,37,3,6,Bulk 1,74
+Bulk 1,37,3,6,Bulk 1,76
+Simpan Telur 1,41,15,20,Simpan Telur 1,78
+Simpan Telur 1,41,15,20,Simpan Telur 1,80
