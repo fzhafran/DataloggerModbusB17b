@@ -66,18 +66,18 @@ def hitung():
         except Exception as exc:
             print(exc)
 
-    if xxx == 10000 :
-        try :
-            print("closing....")
-            os.system("taskkill /f /im READER.exe")
+    # if xxx == 10000 :
+    #     try :
+    #         print("closing....")
+    #         os.system("taskkill /f /im READER.exe")
 
-            try :
-                run1 = Popen('autoerase.exe', creationflags=CREATE_NEW_CONSOLE)
-            except Exception as exc:
-                print(exc)
-            xxx = 0
-        except :
-            xxx = 0
+    #         try :
+    #             run1 = Popen('autoerase.exe', creationflags=CREATE_NEW_CONSOLE)
+    #         except Exception as exc:
+    #             print(exc)
+    #         xxx = 0
+    #     except :
+    #         xxx = 0
     return xxx
 
 def alert (message):

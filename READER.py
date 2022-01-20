@@ -11,6 +11,8 @@ newline = 0
 counter = 0
 simpandata = 0
 COM = 'COM4'
+error = 0
+written = 0
 
 def checkingsch():
     with open('schedule.csv', 'r') as scheduler:
@@ -103,7 +105,7 @@ def checkrequest():
         print("cannot change data")
 
 def read () :
-    global simpandata
+    global simpandata, written, error
     temperature = []
     with open('devicelist.csv', 'r') as deviceslisted:
         devices = []
@@ -126,10 +128,16 @@ def read () :
             instrument.close_port_after_each_call = True
             data = instrument.read_register (0x03e8, 1, 0x04, signed = True)
             devicecondition = "ON"
+            written = 0
+            error = 0
+
         except Exception as exc:
-            with open('errorread.csv', 'a') as errorlog:
-                errorlog.write(str(exc) + ',' + '\n')
-            errorlog.close()
+            error = 1
+            if error == 1 and written == 0:
+                with open('errorread.csv', 'a') as errorlog:
+                    errorlog.write(str(exc) + ',' + '\n')
+                errorlog.close()
+                written = 1
             data = 0
             devicecondition = "OFF"
 
@@ -180,14 +188,8 @@ def increasenewline () :
     logging.close()
     return newline
 
-def counterrun () :
-    global counter
-    counter = counter + 1
-    return counter
-
 while True :
-    global counter
-    counterrun ()
+    counter = counter + 1
     if counter == 6 :
         read ()
         checkrequest()
