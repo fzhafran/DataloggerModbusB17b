@@ -351,7 +351,7 @@ def read () :
                     else:
                         entry.configure(bg="white", text="{value:6.2f} degC".format(value=float(datain[choose])))
                         alerting[choose] = 1
-                        if alerting[choose] = 1 and alarmsent[choose] = 0:
+                        if alerting[choose] == 1 and alarmsent[choose] == 0:
                             alert(param[choose] +','+ param[choose] + " tidak sesuai")
                             alarmsent[choose] = 1
                 if datacond[choose] == 'OFF':
@@ -383,7 +383,7 @@ def read () :
                     else:
                         entry.configure(bg="white", text="{value:6.2f} pa".format(value=float(datain[choose])))
                         alerting[choose] = 1
-                        if alerting[choose] = 1 and alarmsent[choose] = 0:
+                        if alerting[choose] == 1 and alarmsent[choose] == 0:
                             alert(param[choose] +','+ param[choose] + " tidak sesuai")
                             alarmsent[choose] = 1
                 if datacond[choose] == 'OFF':
