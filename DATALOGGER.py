@@ -13,7 +13,7 @@ from subprocess import Popen, CREATE_NEW_CONSOLE
 screensizex = 1205
 screensizey = 730
 root = Tk ()
-root.geometry ('%dx%d' % (screensizex,screensizey))
+root.geometry ('%dx%d' % (root.winfo_screenwidth(),root.winfo_screenheight()))
 root.title ("Data Logger B17b")
 root.config(background = "black")
 
@@ -39,6 +39,7 @@ coldstorparent.grid(row = 1,rowspan = 70, column = 0)
 coldstorparent.config(background='black')
 bgcoldstor = Label(coldstorparent,image=filename)
 bgcoldstor.grid(row = 0, column = 0)
+
 ahuparent = Frame(root, relief=RIDGE)
 ahuparent.grid(row = 1,rowspan = 70, column = 0)
 ahuparent.config(background='black')
@@ -160,7 +161,6 @@ def calendarpickstartend(title, sumbux, sumbuy):
     timepicker = Toplevel()
     timepicker.title("Pick Date and Time")
     timepicker.geometry('130x130+%d+%d' % (popx, popy))
-    print('130x130+%d+%d' % (popx, popy))
     examplelabel = Label(timepicker, width=20, height=1, text="format : YYYY-MM-DD", fg="black", font=(None, 8), anchor="center")
     examplelabel.grid(row=0, column=0)
     starttimeframe = Frame (timepicker)
@@ -900,7 +900,7 @@ while True :
     except Exception as exc:
         print(exc)
 
-    root.update_idletasks()
+    # root.update_idletasks()
     root.update()
 
 # read_every_second ()
