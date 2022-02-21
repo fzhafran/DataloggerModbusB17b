@@ -3,8 +3,6 @@ import time
 from datetime import datetime
 from tkinter import *
 
-import minimalmodbus
-import serial
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg)
 from matplotlib.figure import Figure
 import subprocess, os
@@ -59,12 +57,12 @@ with open ('devicelist.csv','r') as limitlist :
 def hitung():
     global xxx
     xxx = xxx + 1
-    if xxx == 10 :
-        try :
-            print("starting")
-            run = Popen('READER.exe', creationflags=CREATE_NEW_CONSOLE)
-        except Exception as exc:
-            print(exc)
+    # if xxx == 10 :
+    #     try :
+    #         print("starting")
+    #         run = Popen('READER.exe', creationflags=CREATE_NEW_CONSOLE)
+    #     except Exception as exc:
+    #         print(exc)
 
     # if xxx == 10000 :
     #     try :
@@ -129,7 +127,7 @@ def setval(name, alamat):
     screenwidth = root.winfo_screenwidth()
     screenheight = root.winfo_screenheight()
     popx = (screenwidth/2) - (screenwidth-screensizex)
-    popy = (screenheight/2) - (screenwidth-screensizex)
+    popy = (screenheight/2) - (screenheight-screensizey)
     setvalue = Toplevel()
     setvalue.title(name)
     setvalue.geometry('130x65+%d+%d'% (popx, popy))
@@ -158,10 +156,11 @@ def calendarpickstartend(title, sumbux, sumbuy):
     screenwidth = root.winfo_screenwidth()
     screenheight = root.winfo_screenheight()
     popx = (screenwidth / 2) - (screenwidth - screensizex)
-    popy = (screenheight / 2) - (screenwidth - screensizex)
+    popy = (screenheight / 2) - (screenheight - screensizey)
     timepicker = Toplevel()
     timepicker.title("Pick Date and Time")
     timepicker.geometry('130x130+%d+%d' % (popx, popy))
+    print('130x130+%d+%d' % (popx, popy))
     examplelabel = Label(timepicker, width=20, height=1, text="format : YYYY-MM-DD", fg="black", font=(None, 8), anchor="center")
     examplelabel.grid(row=0, column=0)
     starttimeframe = Frame (timepicker)
@@ -179,6 +178,8 @@ def calendarpickstartend(title, sumbux, sumbuy):
     graphbutton = Button(timepicker, text="Draw Graph", width=8, height=1, background="white",
                             command=lambda: monitoringdevice(title, sumbux, sumbuy, starttime.get(), endtime.get()))
     graphbutton.grid(row=3, column=0)
+    timepicker.update()
+
 
 def monitoringdevice (title, sumbux, sumbuy, awal, akhir) :
     def onFrameConfigure(monitorcanv):
